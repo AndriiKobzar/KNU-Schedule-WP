@@ -64,16 +64,21 @@
                     <ListBox ItemsSource="{Binding Subjects}" SelectionChanged="ListBox_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border BorderBrush="White">
+                                <!--<Border BorderBrush="White" BorderThickness="2">-->
                                 <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneChromeBrush}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>                                  
+                                    </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
                                                                          
                                     <!--TextBlock, which represents title of the subject-->
                                     <TextBlock HorizontalAlignment="Left"
                                                Grid.Row="0"
+                                               Grid.Column="0"
                                                Margin="0" 
                                                TextWrapping="Wrap"
                                                VerticalAlignment="Top" 
@@ -96,7 +101,7 @@
                                                VerticalAlignment="Top"/>
 
                                 </Grid>
-                                </Border>
+                                <!--</Border>-->
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>

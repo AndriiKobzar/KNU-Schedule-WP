@@ -1,16 +1,16 @@
-﻿<xapCache source="D:\Study\KNU Schedule\KNU Schedule\Bin\Debug\KNU_Schedule_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="09.07.2015 17:04:08">
-  <file source="D:\Study\KNU Schedule\KNU Schedule\obj\Debug\KNU Schedule.dll" archivePath="KNU Schedule.dll" lastWriteTime="09.07.2015 17:04:06" />
-  <file source="D:\Study\KNU Schedule\KNU Schedule\Assets\PanoramaBackground.png" archivePath="Assets\PanoramaBackground.png" lastWriteTime="07.07.2015 16:04:14" />
-  <file source="D:\Study\KNU Schedule\KNU Schedule\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="07.07.2015 16:04:14" />
-  <file source="D:\Study\KNU Schedule\KNU Schedule\Assets\AppBar1\save.png" archivePath="Assets\AppBar1\save.png" lastWriteTime="07.07.2015 16:19:14" />
-  <file source="D:\Study\KNU Schedule\KNU Schedule\Assets\AppBar\add.png" archivePath="Assets\AppBar\add.png" lastWriteTime="07.07.2015 16:19:14" />
-  <file source="D:\Study\KNU Schedule\KNU Schedule\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="07.07.2015 16:04:14" />
-  <file source="D:\Study\KNU Schedule\KNU Schedule\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="07.07.2015 16:04:14" />
-  <file source="D:\Study\KNU Schedule\KNU Schedule\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="07.07.2015 16:04:14" />
-  <file source="D:\Study\KNU Schedule\KNU Schedule\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="07.07.2015 16:04:14" />
-  <file source="D:\Study\KNU Schedule\KNU Schedule\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="07.07.2015 16:18:18" />
-  <file source="D:\Study\KNU Schedule\KNU Schedule\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="07.07.2015 16:04:14" />
-  <file source="D:\Study\KNU Schedule\KNU Schedule\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="07.07.2015 16:04:14" />
+﻿<xapCache source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\KNU_Schedule_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="18.07.2015 16:53:36">
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\KNU Schedule.dll" archivePath="KNU Schedule.dll" lastWriteTime="18.07.2015 16:53:33" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\PanoramaBackground.png" archivePath="Assets\PanoramaBackground.png" lastWriteTime="07.07.2015 16:04:14" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="07.07.2015 16:04:14" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\AppBar1\save.png" archivePath="Assets\AppBar1\save.png" lastWriteTime="07.07.2015 16:19:14" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\AppBar\add.png" archivePath="Assets\AppBar\add.png" lastWriteTime="07.07.2015 16:19:14" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="07.07.2015 16:04:14" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="07.07.2015 16:04:14" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="07.07.2015 16:04:14" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="07.07.2015 16:04:14" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="07.07.2015 16:18:18" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="07.07.2015 16:04:14" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="07.07.2015 16:04:14" />
   <file source="D:\Study\WORK\Kyiv Live\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="26.01.2015 16:05:03" />
-  <file source="D:\Study\KNU Schedule\KNU Schedule\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="07.07.2015 16:21:34" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="07.07.2015 16:21:34" />
 </xapCache>
