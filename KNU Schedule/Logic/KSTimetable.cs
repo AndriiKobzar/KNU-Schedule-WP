@@ -10,10 +10,11 @@ namespace KNU_Schedule.Logic
         public KSTimetable()
         {
             IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication();
-            if(isf.FileExists("Myfile.store"))
+            if(isf.FileExists("Myfile.store")) 
             {
                 readFromStorage();
             }
+            isf.Dispose();
         }
         public KSSubject this[int day, int period]
         {
@@ -100,5 +101,6 @@ namespace KNU_Schedule.Logic
                 }
             }
         }
+
     }
 }
