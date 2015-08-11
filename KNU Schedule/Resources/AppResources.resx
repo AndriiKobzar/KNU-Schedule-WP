@@ -126,7 +126,7 @@
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
-    <value>KNU Timetable</value>
+    <value>KNU Schedule</value>
   </data>
   <data name="Period" xml:space="preserve">
     <value>period</value>
@@ -138,5 +138,10 @@
   </data>
   <data name="DaysUA" xml:space="preserve">
     <value>{"Понеділок","Вівторок","Середа","Четвер","П'ятниця" }</value>
+    <comment>names of days of week</comment>
+  </data>
+  <data name="ApiPath" xml:space="preserve">
+    <value>http://oschapi.azurewebsites.net/api/Schedule</value>
+    <comment>adress of API server</comment>
   </data>
 </root>

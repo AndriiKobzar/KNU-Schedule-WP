@@ -41,13 +41,17 @@ namespace KNU_Schedule
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (box.SelectedIndex == 0) NavigationService.Navigate(new Uri("/Pages/TimetablePage.xaml", UriKind.Relative));
+
             
         }
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            box.SelectedIndex = -1;
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/TimetablePage.xaml", UriKind.Relative));
         }
         
     }

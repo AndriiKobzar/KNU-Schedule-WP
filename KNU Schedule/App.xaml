@@ -9,7 +9,15 @@
     <!--Application Resources-->
     <Application.Resources>
         <sys:Double x:Key="PanoramaItemHeaderFontSize">66</sys:Double>
-
+        
+            <Style x:Key="KnuBackgroundStyle" TargetType="Grid">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/Assets/knu.jpg"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        
         <Style x:Key="PanoramaItemHeaderTextStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiLight}"/>
             <Setter Property="FontSize" Value="{StaticResource PanoramaItemHeaderFontSize}"/>

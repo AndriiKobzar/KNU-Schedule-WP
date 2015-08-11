@@ -124,7 +124,6 @@ D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\ru-RU\Microsoft.Phone.Controls.T
 D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\sk-SK\Microsoft.Phone.Controls.Toolkit.resources.dll
 D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\sl-SI\Microsoft.Phone.Controls.Toolkit.resources.dll
 D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\sq-AL\Microsoft.Phone.Controls.Toolkit.resources.dll
-D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\sr-Latn-CS\Microsoft.Phone.Controls.Toolkit.resources.dll
 D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\sv-SE\Microsoft.Phone.Controls.Toolkit.resources.dll
 D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\th-TH\Microsoft.Phone.Controls.Toolkit.resources.dll
 D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\tr-TR\Microsoft.Phone.Controls.Toolkit.resources.dll
@@ -135,7 +134,6 @@ D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\zh-CN\Microsoft.Phone.Controls.T
 D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\zh-TW\Microsoft.Phone.Controls.Toolkit.resources.dll
 D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\KNU Schedule.csprojResolveAssemblyReference.cache
 D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\App.g.cs
-D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\Pages\AddItemPage.g.cs
 D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\Pages\MainPage.g.cs
 D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\Pages\TimetablePage.g.cs
 D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\KNU Schedule.g.resources
@@ -144,3 +142,5 @@ D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\KNU Schedule.csproj.GenerateReso
 D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\KNU Schedule.dll
 D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\KNU Schedule.pdb
 D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\XapCacheFile.xml
+D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\Newtonsoft.Json.dll
+D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\Newtonsoft.Json.xml

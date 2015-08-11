@@ -75,7 +75,16 @@ namespace KNU_Schedule.ViewModels
                 }
             }
         }
-
+        private string time;
+        public string Time
+        {
+            get { return time; }
+            set
+            {
+                time = value;
+                NotifyPropertyChanged("Time");
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

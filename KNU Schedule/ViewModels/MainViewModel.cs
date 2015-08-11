@@ -2,12 +2,15 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using KNU_Schedule.Resources;
+using System.Collections.Generic;
+using KNU_Schedule.Logic;
 
 namespace KNU_Schedule.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
         string[] days = new string[5] { "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця" };
+        string[] periodTimes = new string[5] {"8:40 - 10:15","10:35 - 12:10","12:20 - 13:55","14:05 - 15:40"," " };
 
         public MainViewModel()
         {
@@ -35,13 +38,15 @@ namespace KNU_Schedule.ViewModels
             for (int i = 0; i < 5; i++ )
             {
                 ObservableCollection<SubjectViewModel> subj = new ObservableCollection<SubjectViewModel>();
-                for (int j = 0; j < 4; j++)
+                int j = 0;
+                foreach(KSSubject s in App.Timetable[i] )
                 {
-                    if (App.Timetable[i, j] == null)
-                        subj.Add(null);
-                    else subj.Add(new SubjectViewModel() { Teacher = App.Timetable[i, j].Teacher, Title = App.Timetable[i, j].Name, Room = App.Timetable[i, j].Room });
+                    if (j<5) 
+                    subj.Add(new SubjectViewModel() { Teacher = s.LectureName, Title = s.Name, Room = s.RoomName, Time = periodTimes[j++] });
+                    else
+                        subj.Add(new SubjectViewModel() { Teacher = s.LectureName, Title = s.Name, Room = s.RoomName });
                 }
-                Days.Add(new DayViewModel() { Header = days[i], Subjects = subj });
+                Days.Add(new DayViewModel() { Header = days[i], Subjects = subj,  });
             }
             this.IsDataLoaded = true;
         }

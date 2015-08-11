@@ -16,9 +16,7 @@ namespace KNU_Schedule
     {
 
         int currentItem = 0;
-        
-        Uri addUri = new Uri("/Pages/AddItemPage.xaml", UriKind.Relative);
-        
+               
         public TimetablePage()
         {
             InitializeComponent();
@@ -30,13 +28,7 @@ namespace KNU_Schedule
                 case DayOfWeek.Thursday: pivot.SelectedIndex = 3; break;
                 case DayOfWeek.Friday: pivot.SelectedIndex = 4; break;
                 default: pivot.SelectedIndex = 0; break; // Monday or weekend
-
             }
-        }
-
-        private void AddAppBarButton_Click(object sender, EventArgs e)
-        {
-            NavigationService.Navigate(addUri);
         }
 
         private void pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -46,23 +38,24 @@ namespace KNU_Schedule
 
         private void SaveAppBarButton_Click(object sender, EventArgs e)
         {
-            App.Timetable.Save();
+            App.ViewModel.LoadData();
+            this.pivot.DataContext = App.ViewModel.Days;
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);            
-            if(e.NavigationMode == NavigationMode.Back)
+            base.OnNavigatedTo(e);
+            KSConnector connector = new KSConnector(App.Timetable,"22");
+            connector.DownloadStarted += () => {  };
+            connector.DownloadEnded += () =>
             {
-                if (PhoneApplicationService.Current.State.ContainsKey(AppResources.Period) && PhoneApplicationService.Current.State.ContainsKey(AppResources.Subject))
-                {
-                    int period = (int)PhoneApplicationService.Current.State[AppResources.Period];
-                    KSSubject subject = PhoneApplicationService.Current.State[AppResources.Subject] as KSSubject;
-
-                    App.Timetable[currentItem, period-1] = subject;
-                    App.ViewModel.LoadData();
-                    this.pivot.DataContext = App.ViewModel.Days;
-                }
-            }
+                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                    {
+                        DownloadingBar.Visibility = Visibility.Collapsed;
+                        App.ViewModel.LoadData();
+                        this.pivot.DataContext = App.ViewModel.Days;
+                    });
+            };
+            connector.CreateTimetable();
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
