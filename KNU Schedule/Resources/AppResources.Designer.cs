@@ -88,6 +88,15 @@ namespace KNU_Schedule.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to groupId.
+        /// </summary>
+        public static string GROUP_ID {
+            get {
+                return ResourceManager.GetString("GROUP_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to period.
         /// </summary>
         public static string Period {

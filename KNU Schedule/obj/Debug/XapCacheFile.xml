@@ -1,17 +1,18 @@
-﻿<xapCache source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\KNU_Schedule_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="11.08.2015 13:58:21">
-  <file source="D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\KNU Schedule.dll" archivePath="KNU Schedule.dll" lastWriteTime="11.08.2015 13:58:19" />
+﻿<xapCache source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\KNU_Schedule_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="28.08.2015 17:10:02">
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\KNU Schedule.dll" archivePath="KNU Schedule.dll" lastWriteTime="28.08.2015 17:10:00" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\AppBar\back.png" archivePath="Assets\AppBar\back.png" lastWriteTime="01.01.2013 18:57:00" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\knu.jpg" archivePath="Assets\knu.jpg" lastWriteTime="10.08.2015 16:06:25" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\PanoramaBackground.png" archivePath="Assets\PanoramaBackground.png" lastWriteTime="07.07.2015 16:04:14" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="07.07.2015 16:04:14" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\AppBar1\save.png" archivePath="Assets\AppBar1\save.png" lastWriteTime="07.07.2015 16:19:14" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\AppBar\add.png" archivePath="Assets\AppBar\add.png" lastWriteTime="07.07.2015 16:19:14" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="07.07.2015 16:04:14" />
-  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="07.07.2015 16:04:14" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="23.08.2015 19:16:08" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="07.07.2015 16:04:14" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="07.07.2015 16:04:14" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="10.08.2015 15:02:38" />
-  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="07.07.2015 16:04:14" />
-  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="07.07.2015 16:04:14" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="23.08.2015 19:21:41" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="23.08.2015 19:12:31" />
   <file source="D:\Study\WORK\Kyiv Live\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="26.01.2015 16:05:03" />
   <file source="D:\Study\KNU Schedule WP\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll" archivePath="Newtonsoft.Json.dll" lastWriteTime="10.08.2015 14:24:57" />
   <file source="D:\Study\KNU Schedule WP\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml" archivePath="Newtonsoft.Json.xml" lastWriteTime="10.08.2015 14:24:57" />

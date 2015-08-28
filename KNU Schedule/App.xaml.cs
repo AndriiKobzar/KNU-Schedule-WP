@@ -11,13 +11,15 @@ using Microsoft.Phone.Shell;
 using KNU_Schedule.Resources;
 using KNU_Schedule.ViewModels;
 using KNU_Schedule.Logic;
+using System.IO.IsolatedStorage;
 
 namespace KNU_Schedule
 {
     public partial class App : Application
     {
         private static MainViewModel viewModel = null;
-        private static KSTimetable timetable = null;
+        private static KSTimetable timetable = new KSTimetable();
+        private static KSController connector;
         /// <summary>
         /// A static ViewModel used by the views to bind against.
         /// </summary>
@@ -31,6 +33,16 @@ namespace KNU_Schedule
                     viewModel = new MainViewModel();
 
                 return viewModel;
+            }
+        }
+        public static KSController Connector
+        {
+            get
+            {
+                if (connector == null)
+                    connector = new KSController(timetable);
+
+                return connector;
             }
         }
         public static KSTimetable Timetable
@@ -103,6 +115,8 @@ namespace KNU_Schedule
             {
                 App.ViewModel.LoadData();
             }
+            if(IsolatedStorageSettings.ApplicationSettings.Contains("groupId"))
+                App.RootFrame.Navigate(new Uri("/Pages/TimetablePage.xaml", UriKind.Relative));
         }
 
         // Code to execute when the application is deactivated (sent to background)
@@ -144,6 +158,7 @@ namespace KNU_Schedule
 
         // Avoid double-initialization
         private bool phoneApplicationInitialized = false;
+
 
         // Do not add any additional code to this method
         private void InitializePhoneApplication()

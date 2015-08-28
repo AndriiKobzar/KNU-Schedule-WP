@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KNU_Schedule.Logic;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -14,10 +15,6 @@ namespace KNU_Schedule.ViewModels
     public class SubjectViewModel : INotifyPropertyChanged
     {
         private string title;
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
         public string Title
         {
             get
@@ -131,6 +128,73 @@ namespace KNU_Schedule.ViewModels
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+    }
+    public class FacultyViewModel:INotifyPropertyChanged
+    {
+        string name = "";
+        public string FacultyName
+        {
+            get { return name; }
+            set 
+            {
+                if (name != value)
+                {
+                    name = value;
+                    NotifyPropertyChanged("Name");
+                }
+            }
+        }
+        string id = null;
+        public string ID
+        {
+            get { return this.id; }
+            set { this.id = value; }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (null != handler)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        public override string ToString()
+        {
+            return this.name;
+        }
+    }
+    public class GroupViewModel : INotifyPropertyChanged
+    {
+        string name = "";
+
+        public string GroupName
+        {
+            get { return name; }
+            set 
+            {
+                if (name != value)
+                {
+                    name = value;
+                    NotifyPropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (null != handler)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public override string ToString()
+        {
+            return this.name;
         }
     }
 }

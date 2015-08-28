@@ -12,6 +12,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
+    
     shell:SystemTray.IsVisible="False" toolkit:TiltEffect.IsTiltEnabled="True">
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
@@ -34,14 +35,50 @@
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Style="{StaticResource KnuBackgroundStyle}">
-        <TextBlock Text="Оберіть факультет" Margin="12,24,0,0" FontSize="40"/>
-        <toolkit:ListPicker toolkit:TiltEffect.IsTiltEnabled="False" Margin="12,96,12,0">
-            <toolkit:ListPickerItem Content="FRECS" Margin="0,0,15,0"/>
-            <toolkit:ListPickerItem Content="Cybernetics"/>
-            <toolkit:ListPickerItem Content="Phys"/>
-            <toolkit:ListPickerItem Content="Mech-math"/>
+    <Grid x:Name="LayoutRoot"
+          Style="{StaticResource KnuBackgroundStyle}">
+
+        <TextBlock Text="Розклад КНУ"
+                   TextAlignment="Center"
+                   Margin="12,24,12,0"
+                   FontSize="50"/>
+        <TextBlock Text="Оберіть факультет"
+                   Margin="22,147,-10,593" 
+                   FontSize="40"/>
+        <TextBlock HorizontalAlignment="Left" 
+                   Margin="10,288,0,457" 
+                   TextWrapping="Wrap" 
+                   Text="Оберіть групу"
+                   FontSize="40"/>
+
+
+        <toolkit:ListPicker ItemsSource="{Binding FacultyList}"
+                            x:Name="FacultyPicker"
+                            Margin="12,198,12,12"
+                            SelectionChanged="FacultyPicker_SelectionChanged">
+            <toolkit:ListPicker.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding FacultyName}"/>
+                </DataTemplate>
+            </toolkit:ListPicker.ItemTemplate>
         </toolkit:ListPicker>
-        <Button x:Name="LoginBtn" Content="Login" Click="LoginBtn_Click" Margin="161,307,161,404"/>
+
+        <toolkit:ListPicker ItemsSource="{Binding GroupsList}"
+                            x:Name="GroupPicker"
+                            Margin="12,348,12,12">
+            <toolkit:ListPicker.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding GroupName}"/>
+                </DataTemplate>
+            </toolkit:ListPicker.ItemTemplate>
+        </toolkit:ListPicker>
+        
+
+        <Button x:Name="LoginBtn" 
+                Content="Увійти" 
+                Click="LoginBtn_Click" 
+                Margin="154,482,168,221"/>
+
     </Grid>
+
 </phone:PhoneApplicationPage>

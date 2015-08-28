@@ -61,7 +61,13 @@ namespace KNU_Schedule.Logic
             }
             return false;
         }
-        
 
+        internal void Clear()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                timetable[i] = new List<KSSubject>();
+            }
+        }
     }
 }

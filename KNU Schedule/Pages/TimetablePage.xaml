@@ -13,7 +13,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.IsVisible="False"
     toolkit:TiltEffect.IsTiltEnabled="True">
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
@@ -35,25 +35,23 @@
             </toolkit:NavigationOutTransition.Forward>
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
+    <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar>
-            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar1/save.png" 
-                                            IsEnabled="True" 
-                                            Text="зберегти"
-                                            Click="SaveAppBarButton_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/back.png" IsEnabled="True" Text="відміна" Click="ApplicationBarIconButton_Click"/>
+
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+    </phone:PhoneApplicationPage.ApplicationBar>
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <ProgressBar x:Name="DownloadingBar"
-                     IsIndeterminate="True"
-                     
-                     Height="15" Margin="0,10,0,743"/>
+                     IsIndeterminate="True"                      
+                     Height="15" Margin="0,4,0,781"/>
         <!--Pivot Control-->
         <phone:Pivot x:Name="pivot" 
                      Title="KNU SCHEDULE" 
                      ItemsSource = "{Binding}"
-                     SelectionChanged="pivot_SelectionChanged">
+                     SelectionChanged="pivot_SelectionChanged"
+                     Margin ="0,24,0,0">
             <phone:Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Header}"/>
@@ -64,13 +62,14 @@
                     <ListBox ItemsSource="{Binding Subjects}" Margin="12,0,0,0" SelectionChanged="ListBox_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
+
                                 <!--<Border BorderBrush="White" BorderThickness="2">-->
-                                <Grid x:Name="LayoutRoot" Margin ="0,12,0,0">
+                                <Grid x:Name="LayoutRoot" Margin ="0,0,0,12">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
+                                    <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
@@ -97,8 +96,8 @@
                                                Grid.Row="0"
                                                Grid.Column ="1"
                                                FontSize="25"
-                                               Margin="96,0,12,0" 
-                                               TextWrapping="Wrap" 
+                                               Margin="96,0,12,0"
+                                               TextAlignment ="Left"
                                                VerticalAlignment="Center"/>
                                      <!-- TextBlock, which represents time borders of period-->
                                     <TextBlock Text="{Binding Time}"

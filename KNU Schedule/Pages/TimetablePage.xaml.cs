@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using KNU_Schedule.Logic;
 using KNU_Schedule.Resources;
+using System.IO.IsolatedStorage;
 
 namespace KNU_Schedule
 {
@@ -20,8 +21,8 @@ namespace KNU_Schedule
         public TimetablePage()
         {
             InitializeComponent();
-            pivot.DataContext = App.ViewModel.Days;
-            switch(DateTime.Now.DayOfWeek) // show timetable for today
+            DataContext = App.ViewModel;
+            switch(DateTime.Now.DayOfWeek) // show timetable for this day
             {
                 case DayOfWeek.Tuesday: pivot.SelectedIndex = 1; break;
                 case DayOfWeek.Wednesday: pivot.SelectedIndex = 2; break;
@@ -44,9 +45,12 @@ namespace KNU_Schedule
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            KSConnector connector = new KSConnector(App.Timetable,"22");
-            connector.DownloadStarted += () => {  };
-            connector.DownloadEnded += () =>
+            KSController connector = App.Connector;
+            connector.ScheduleDownloadBreaked += () => 
+            {
+                Deployment.Current.Dispatcher.BeginInvoke(() => { MessageBox.Show("Не вдалося завантажити розклад. Перевірте підключення до мережі."); });
+            };
+            connector.ScheduleDownloadEnded += () =>
             {
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
                     {
@@ -55,12 +59,23 @@ namespace KNU_Schedule
                         this.pivot.DataContext = App.ViewModel.Days;
                     });
             };
-            connector.CreateTimetable();
+            connector.CreateTimetable(IsolatedStorageSettings.ApplicationSettings[AppResources.GROUP_ID].ToString());
+            connector.GetGroupsList();
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             (sender as ListBox).SelectedIndex = -1;
+        }
+
+        private void ApplicationBarIconButton_Click(object sender, EventArgs e)
+        {
+            IsolatedStorageSettings.ApplicationSettings.Remove(AppResources.GROUP_ID);
+            NavigationService.Navigate(new Uri("/Pages/MainPage.xaml", UriKind.Relative));
+        }
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.Terminate();
         }
     }
 }

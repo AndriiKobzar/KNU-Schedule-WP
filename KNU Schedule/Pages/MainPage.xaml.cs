@@ -7,6 +7,9 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using KNU_Schedule.ViewModels;
+using System.IO.IsolatedStorage;
+using KNU_Schedule.Resources;
 
 namespace KNU_Schedule
 {
@@ -16,8 +19,6 @@ namespace KNU_Schedule
         public MainPage()
         {
             InitializeComponent();
-
-            // Set the data context of the listbox control to the sample data
             DataContext = App.ViewModel;
         }
 
@@ -28,22 +29,10 @@ namespace KNU_Schedule
             {
                 App.ViewModel.LoadData();
             }
-            SlideTransition transition = new SlideTransition();
-            transition.Mode = SlideTransitionMode.SlideRightFadeIn;
-            PhoneApplicationPage page = (PhoneApplicationPage)((PhoneApplicationFrame)Application.Current.RootVisual).Content;
-            ITransition trans = transition.GetTransition(page);
-            trans.Completed += delegate
-            {
-                trans.Stop();
-            };
-            trans.Begin();
+            if (IsolatedStorageSettings.ApplicationSettings.Contains(AppResources.GROUP_ID))
+                NavigationService.Navigate(new Uri("/Pages/TimetablePage.xaml", UriKind.Relative));
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-            
-        }
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
@@ -51,8 +40,20 @@ namespace KNU_Schedule
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
+            string groupName = (GroupPicker.SelectedItem as GroupViewModel).GroupName;
+            if (!IsolatedStorageSettings.ApplicationSettings.Contains(AppResources.GROUP_ID))
+                IsolatedStorageSettings.ApplicationSettings.Add(AppResources.GROUP_ID, App.ViewModel.IdByName(groupName));
+            else
+                IsolatedStorageSettings.ApplicationSettings[AppResources.GROUP_ID] = App.ViewModel.IdByName(groupName);
             NavigationService.Navigate(new Uri("/Pages/TimetablePage.xaml", UriKind.Relative));
         }
-        
+
+        private void FacultyPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {            
+            if (FacultyPicker!=null && FacultyPicker.SelectedItem!=null)
+            App.ViewModel.LoadGroups((FacultyPicker.SelectedItem as FacultyViewModel).ID);
+            GroupPicker.ItemsSource = App.ViewModel.GroupsList;
+        }
+
     }
 }
