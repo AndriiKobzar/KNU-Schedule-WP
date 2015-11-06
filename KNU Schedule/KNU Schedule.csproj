@@ -118,10 +118,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <DesignData Include="SampleData\MainViewModelSampleData.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </DesignData>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -133,6 +129,7 @@
   <ItemGroup>
     <Content Include="Assets\AppBar\back.png" />
     <Content Include="Assets\knu.jpg" />
+    <Content Include="Assets\KNU_Background.jpg" />
     <Content Include="Assets\PanoramaBackground.png" />
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\AppBar1\save.png" />

@@ -110,12 +110,8 @@ namespace KNU_Schedule
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
-            // Ensure that application state is restored appropriately
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadData();
-            }
-            if(IsolatedStorageSettings.ApplicationSettings.Contains("groupId"))
+            App.ViewModel.LoadGroups();
+            if(IsolatedStorageSettings.ApplicationSettings.Contains(AppResources.GROUP_ID))
                 App.RootFrame.Navigate(new Uri("/Pages/TimetablePage.xaml", UriKind.Relative));
         }
 
@@ -124,7 +120,7 @@ namespace KNU_Schedule
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
             // Ensure that required application state is persisted here.
-            
+            App.ViewModel.LoadSubjects();
         }
 
         // Code to execute when the application is closing (eg, user hit Back)

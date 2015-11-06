@@ -34,7 +34,7 @@ namespace KNU_Schedule.Logic
             set 
             { 
                 this.timetable[day][period] = value;
-                App.ViewModel.LoadData();
+                App.ViewModel.LoadGroups();
             }
         }
         public List<KSSubject> this[int day]

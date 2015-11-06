@@ -43,23 +43,27 @@
     </phone:PhoneApplicationPage.ApplicationBar>
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
+        
         <ProgressBar x:Name="DownloadingBar"
                      IsIndeterminate="True"                      
                      Height="15" Margin="0,4,0,781"/>
         <!--Pivot Control-->
-        <phone:Pivot x:Name="pivot" 
+        <phone:Panorama x:Name="pivot" 
                      Title="KNU SCHEDULE" 
-                     ItemsSource = "{Binding}"
+                     ItemsSource = "{Binding Days, Mode=TwoWay}"
                      SelectionChanged="pivot_SelectionChanged"
-                     Margin ="0,24,0,0">
-            <phone:Pivot.HeaderTemplate>
+                     >
+            <phone:Panorama.Background>
+                <ImageBrush ImageSource="/Assets/KNU_Background.jpg"/>
+            </phone:Panorama.Background>
+        <phone:Panorama.HeaderTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Header}"/>
+                    <TextBlock Text="{Binding Header, Mode=TwoWay}" Foreground="White"/>
                 </DataTemplate>
-            </phone:Pivot.HeaderTemplate>
-            <phone:Pivot.ItemTemplate>
+            </phone:Panorama.HeaderTemplate>
+            <phone:Panorama.ItemTemplate>
                 <DataTemplate>
-                    <ListBox ItemsSource="{Binding Subjects}" Margin="12,0,0,0" SelectionChanged="ListBox_SelectionChanged">
+                    <ListBox ItemsSource="{Binding Subjects, Mode=TwoWay}" Margin="12,0,0,0" SelectionChanged="ListBox_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
 
@@ -83,27 +87,31 @@
                                                VerticalAlignment="Top" 
                                                Height="Auto" Width="460"
                                                FontSize="50"
-                                               Text="{Binding Title}"/>
+                                               Foreground="White"
+                                               Text="{Binding Title, Mode=TwoWay}"/>
                                     <!--TextBlock, which represents name of the teacher-->
-                                    <TextBlock Text="{Binding Teacher}"
+                                    <TextBlock Text="{Binding Teacher, Mode=TwoWay}"
                                                Grid.Row="1"
                                                Grid.Column ="0"
                                                FontSize="30"
                                                Margin="0,12,0,0"
+                                               Foreground="White"
                                                VerticalAlignment="Top"/>
                                     <!--TextBlock, which represents room, where period is-->
-                                    <TextBlock Text="{Binding Room}" 
+                                    <TextBlock Text="{Binding Room, Mode=TwoWay}" 
                                                Grid.Row="0"
                                                Grid.Column ="1"
                                                FontSize="25"
                                                Margin="96,0,12,0"
+                                               Foreground="White"
                                                TextAlignment ="Left"
                                                VerticalAlignment="Center"/>
                                      <!-- TextBlock, which represents time borders of period-->
-                                    <TextBlock Text="{Binding Time}"
+                                    <TextBlock Text="{Binding Time, Mode=TwoWay}"
                                                Grid.Row="1"
                                                Grid.Column="1"
                                                FontSize="25"
+                                               Foreground="White"
                                                Margin ="0,12,12,0"/>
                                 </Grid>
                                 <!--</Border>-->
@@ -111,8 +119,8 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </DataTemplate>
-            </phone:Pivot.ItemTemplate>   
-        </phone:Pivot>
+            </phone:Panorama.ItemTemplate>   
+        </phone:Panorama>
     </Grid>
     
 </phone:PhoneApplicationPage>

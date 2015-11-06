@@ -1,7 +1,8 @@
-﻿<xapCache source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\KNU_Schedule_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="28.08.2015 17:10:02">
-  <file source="D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\KNU Schedule.dll" archivePath="KNU Schedule.dll" lastWriteTime="28.08.2015 17:10:00" />
+﻿<xapCache source="D:\Study\KNU Schedule WP\KNU Schedule\Bin\Debug\KNU_Schedule_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="13.09.2015 16:26:34">
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\obj\Debug\KNU Schedule.dll" archivePath="KNU Schedule.dll" lastWriteTime="13.09.2015 16:26:32" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\AppBar\back.png" archivePath="Assets\AppBar\back.png" lastWriteTime="01.01.2013 18:57:00" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\knu.jpg" archivePath="Assets\knu.jpg" lastWriteTime="10.08.2015 16:06:25" />
+  <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\KNU_Background.jpg" archivePath="Assets\KNU_Background.jpg" lastWriteTime="07.09.2015 22:31:45" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\PanoramaBackground.png" archivePath="Assets\PanoramaBackground.png" lastWriteTime="07.07.2015 16:04:14" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="07.07.2015 16:04:14" />
   <file source="D:\Study\KNU Schedule WP\KNU Schedule\Assets\AppBar1\save.png" archivePath="Assets\AppBar1\save.png" lastWriteTime="07.07.2015 16:19:14" />

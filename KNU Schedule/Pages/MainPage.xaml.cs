@@ -19,7 +19,7 @@ namespace KNU_Schedule
         public MainPage()
         {
             InitializeComponent();
-            DataContext = App.ViewModel;
+            DataContext = App.ViewModel;           
         }
 
         // Load data for the ViewModel Items
@@ -27,7 +27,7 @@ namespace KNU_Schedule
         {
             if (!App.ViewModel.IsDataLoaded)
             {
-                App.ViewModel.LoadData();
+                App.ViewModel.LoadGroups();
             }
             if (IsolatedStorageSettings.ApplicationSettings.Contains(AppResources.GROUP_ID))
                 NavigationService.Navigate(new Uri("/Pages/TimetablePage.xaml", UriKind.Relative));
@@ -40,11 +40,11 @@ namespace KNU_Schedule
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            string groupName = (GroupPicker.SelectedItem as GroupViewModel).GroupName;
-            if (!IsolatedStorageSettings.ApplicationSettings.Contains(AppResources.GROUP_ID))
-                IsolatedStorageSettings.ApplicationSettings.Add(AppResources.GROUP_ID, App.ViewModel.IdByName(groupName));
-            else
-                IsolatedStorageSettings.ApplicationSettings[AppResources.GROUP_ID] = App.ViewModel.IdByName(groupName);
+            //string groupName = (GroupPicker.SelectedItem as GroupViewModel).GroupName;
+            //if (!IsolatedStorageSettings.ApplicationSettings.Contains(AppResources.GROUP_ID))
+            //    IsolatedStorageSettings.ApplicationSettings.Add(AppResources.GROUP_ID, App.ViewModel.IdByName(groupName));
+            //else
+            //    IsolatedStorageSettings.ApplicationSettings[AppResources.GROUP_ID] = App.ViewModel.IdByName(groupName);
             NavigationService.Navigate(new Uri("/Pages/TimetablePage.xaml", UriKind.Relative));
         }
 
