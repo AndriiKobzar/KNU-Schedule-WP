@@ -94,9 +94,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Logic\KSClassroom.cs" />
     <Compile Include="Logic\KSConnector.cs" />
+    <Compile Include="Logic\KSFaculty.cs" />
     <Compile Include="Logic\KSGroup.cs" />
     <Compile Include="Logic\KSSubject.cs" />
+    <Compile Include="Logic\KSTeacher.cs" />
     <Compile Include="Logic\KSTimetable.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

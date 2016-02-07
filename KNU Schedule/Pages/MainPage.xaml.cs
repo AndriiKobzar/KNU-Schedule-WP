@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Net;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
 using KNU_Schedule.ViewModels;
 using System.IO.IsolatedStorage;
 using KNU_Schedule.Resources;
@@ -19,7 +15,7 @@ namespace KNU_Schedule
         public MainPage()
         {
             InitializeComponent();
-            DataContext = App.ViewModel;           
+            DataContext = App.ViewModel;
         }
 
         // Load data for the ViewModel Items
@@ -49,9 +45,9 @@ namespace KNU_Schedule
         }
 
         private void FacultyPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {            
-            if (FacultyPicker!=null && FacultyPicker.SelectedItem!=null)
-            App.ViewModel.LoadGroups((FacultyPicker.SelectedItem as FacultyViewModel).ID);
+        {
+            if (FacultyPicker != null && FacultyPicker.SelectedItem != null)
+                App.ViewModel.LoadGroups((FacultyPicker.SelectedItem as FacultyViewModel).ID);
             GroupPicker.ItemsSource = App.ViewModel.GroupsList;
         }
 

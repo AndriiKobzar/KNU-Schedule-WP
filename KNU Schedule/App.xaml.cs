@@ -18,7 +18,7 @@ namespace KNU_Schedule
     public partial class App : Application
     {
         private static MainViewModel viewModel = null;
-        private static KSTimetable timetable = new KSTimetable();
+        private static KSSchedule timetable = new KSSchedule();
         private static KSController connector;
         /// <summary>
         /// A static ViewModel used by the views to bind against.
@@ -45,12 +45,12 @@ namespace KNU_Schedule
                 return connector;
             }
         }
-        public static KSTimetable Timetable
+        public static KSSchedule Timetable
         {
             get 
             {
                 if (timetable == null)
-                    timetable = new KSTimetable();
+                    timetable = new KSSchedule();
                 return timetable;
             }
         }

@@ -12,7 +12,7 @@ namespace KNU_Schedule.ViewModels
     {
         string[] daysTranslator = new string[5] { "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця" };
         string[] periodTimes = new string[5] {"8:40 - 10:15","10:35 - 12:10","12:20 - 13:55","14:05 - 15:40"," " };
-        List<KSGroup> groups = new List<KSGroup>();
+        Dictionary<string, List<KSGroup>> groups = new Dictionary<string,List<KSGroup>>();
         Dictionary<string, string> facultiesTranslator = new Dictionary<string, string>();
         public MainViewModel()
         {
@@ -70,12 +70,19 @@ namespace KNU_Schedule.ViewModels
         {
             App.Connector.GroupsDownloadStarted += () => { };
             App.Connector.GroupsDownloadEnded += Connector_GroupsDownloadEnded;
-            App.Connector.GetGroupsList();
-            
+            App.Connector.FacultiesDownloadEnded += Connector_FacultiesDownloadEnded;
+            //App.Connector.GetGroupsList(1);
+            App.Connector.GetFaculties();
             FacultyList = new ObservableCollection<FacultyViewModel>();
             
             this.IsDataLoaded = true;
         }
+
+        private void Connector_FacultiesDownloadEnded(List<KSFaculty> faculties)
+        {
+            
+        }
+
         public void LoadSubjects()
         {
             Days = new ObservableCollection<DayViewModel>();
@@ -85,43 +92,32 @@ namespace KNU_Schedule.ViewModels
                 int j = 0;
                 foreach (KSSubject s in App.Timetable[i])
                 {
-                    if (j < 5)
-                        subj.Add(new SubjectViewModel() { Teacher = s.LectureName, Title = s.Name, Room = s.RoomName, Time = periodTimes[j++] });
-                    else
-                        subj.Add(new SubjectViewModel() { Teacher = s.LectureName, Title = s.Name, Room = s.RoomName });
+                    //if (j < 5)
+                    //    subj.Add(new SubjectViewModel() { Teacher = s.Teachers.For, Title = s.Name, Room = s.RoomName, Time = periodTimes[j++] });
+                    //else
+                    //    subj.Add(new SubjectViewModel() { Teacher = s.LectureName, Title = s.Name, Room = s.RoomName });
                 }
                 Days.Add(new DayViewModel() { Header = daysTranslator[i], Subjects = subj });
             }
         }
-        void Connector_GroupsDownloadEnded(List<KSGroup> result)
+        void Connector_GroupsDownloadEnded(List<Dictionary<string, List<KSGroup>>> result)
         {
-            groups = result;
-            
-            List<string> faculties = new List<string>();
-            foreach(KSGroup group in result)
-            {
-                if (!faculties.Contains(group.FacultyId)) faculties.Add(group.FacultyId);
-            }
-            Deployment.Current.Dispatcher.BeginInvoke(() => FacultyList = new ObservableCollection<FacultyViewModel>());
-            foreach(string faculty in faculties)
-            {
-                Deployment.Current.Dispatcher.BeginInvoke(() => FacultyList.Add(new FacultyViewModel() { FacultyName=facultiesTranslator[faculty], ID=faculty}));     
-            }
+            groups = result[0];           
         }
         public void LoadGroups(string faculty)
         {
             GroupsList = new ObservableCollection<GroupViewModel>();
-            foreach(KSGroup group in groups)
-            {
-                if (group.FacultyId.Equals(faculty)) GroupsList.Add(new GroupViewModel() { GroupName = group.Name });
-            }
+            //foreach(KSGroup group in groups)
+            //{
+            //     GroupsList.Add(new GroupViewModel() { GroupName = group.name });
+            //}
         }
         public string IdByName(string groupName)
         {
-            foreach(KSGroup group in groups)
-            {
-                if (group.Name == groupName) return group.Id;
-            }
+            //foreach(KSGroup group in groups)
+            //{
+            //    if (group.Name == groupName) return group.Id;
+            //}
             return null;
         }
         public event PropertyChangedEventHandler PropertyChanged;

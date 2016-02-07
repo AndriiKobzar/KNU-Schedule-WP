@@ -61,7 +61,7 @@ namespace KNU_Schedule.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://oschapi.azurewebsites.net/api/Schedule.
+        ///   Looks up a localized string similar to http://knuapps.cloudapp.net/schedule/.
         /// </summary>
         public static string ApiPath {
             get {

@@ -13,17 +13,17 @@ using System.Collections.Generic;
 
 namespace KNU_Schedule.Logic
 {
-    public class KSTimetable
+    public class KSSchedule
     {
         List<KSSubject>[] timetable = new List<KSSubject>[5];
-        public KSTimetable()
+        public KSSchedule()
         {
             for (int i = 0; i < 5; i++)
             {
                 timetable[i] = new List<KSSubject>();
             }
         }
-        public KSTimetable(string groupKey):this()
+        public KSSchedule(string groupKey):this()
         {
             
         }
@@ -70,4 +70,15 @@ namespace KNU_Schedule.Logic
             }
         }
     }
+    public class KSScheduleResult
+    {
+        public int Status { get; set; }
+        public int Error { get; set; }
+        //first level-for security and standartization
+        //second level is for week data
+        //third level is for day data
+        //fourth level is for subject data
+        public List<Dictionary<string,Dictionary<string,List<List<KSSubject>>>>> Result;
+    }
+
 }

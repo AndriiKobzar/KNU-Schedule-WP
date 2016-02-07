@@ -5,17 +5,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Net;
-using System.Threading;
 using System.Windows;
-using System.Windows.Threading;
 
 namespace KNU_Schedule.Logic
 {
 
     public class KSController
     {
-        public delegate void GroupDownloadResult(List<KSGroup> groups);
-
+        public delegate void GroupDownloadResult(List<Dictionary<string, List<KSGroup>>> groups);
+        public delegate void FacultyDownloadResult(List<KSFaculty> faculties);
 
         public event Action ScheduleDownloadStarted = () => { };
         public event Action ScheduleDownloadEnded = () => { };
@@ -25,77 +23,51 @@ namespace KNU_Schedule.Logic
         public event Action GroupsDownloadBreaked;
         public event GroupDownloadResult GroupsDownloadEnded;
 
-        KSTimetable timetable = new KSTimetable();
+        public event Action FacultiesDownloadStarted = () => { };
+        public event Action FacultiesDownloadBreaked = () => { };
+        public event FacultyDownloadResult FacultiesDownloadEnded;
+
+        KSSchedule timetable = new KSSchedule();
         HttpWebRequest request = null;
 
-        private bool isDataLoaded = false;
-        
-        int time = 10;
-        public KSController(KSTimetable timetable)
+        public KSController(KSSchedule timetable)
         {
             this.timetable = timetable;
-
         }
 
 
         public void CreateTimetable(string groupId)
         {
             timetable.Clear();
-            DateTime now = DateTime.Now;
-            DateTime prevMonday = now;
-            while (prevMonday.DayOfWeek!=DayOfWeek.Monday)
-            {
-                prevMonday = prevMonday.AddDays(-1);
-            }
-            string start = string.Format("{0}-{1}-{2}",prevMonday.Year, prevMonday.Month, prevMonday.Day);
-            DateTime nextMonday = now;
-            if (now.DayOfWeek == DayOfWeek.Monday)
-            {
-                nextMonday.AddDays(7);
-            }
-            else
-            {
-                while (nextMonday.DayOfWeek != DayOfWeek.Monday)
-                {
-                    nextMonday = nextMonday.AddDays(1);
-                }
-            }
-            string end = string.Format("{0}-{1}-{2}", nextMonday.Year, nextMonday.Month, nextMonday.Day); ;
-            string requestUrl = string.Format("{0}?groupKey=\"{1}\"&lastEditDate=null&start={2}&end={3}", AppResources.ApiPath, groupId, start, end);
-            HttpWebRequest request = HttpWebRequest.CreateHttp(requestUrl); //AppResources.ApiPath+"?groupKey=\"12\"&lastEditDate=null&start=2015-08-10&end=2015-08-16)"
-            request.BeginGetResponse(receiveData, request);
+            WebRequest request = WebRequest.CreateHttp(AppResources.ApiPath + groupId);
+            request.BeginGetResponse(ScheduleResult, request);
             ScheduleDownloadStarted();
         }
-        private void receiveData(IAsyncResult result)
+        private void ScheduleResult(IAsyncResult result)
         {
-            isDataLoaded = true;
             HttpWebRequest request = result.AsyncState as HttpWebRequest;
             if (request != null)
             {
                 try
                 {
-                    WebResponse response = request.EndGetResponse(result);
-                    string results;
-                    using (var stream = new StreamReader(response.GetResponseStream()))
+                    using (WebResponse response = request.EndGetResponse(result))
                     {
-                        results = stream.ReadToEnd();
+                        string results;
+                        using (var stream = new StreamReader(response.GetResponseStream()))
+                        {
+                            results = stream.ReadToEnd();
+                        }
+                        saveDataToIsolatedStorage(results);
+                        KSScheduleResult list = JsonConvert.DeserializeObject<KSScheduleResult>(results);
                     }
-                    saveDataToIsolatedStorage(results);
-                    List<KSSubject> list = JsonConvert.DeserializeObject<List<KSSubject>>(results);
-                    response.Close();
-                    foreach (KSSubject subject in list)
-                    {
-                        int numberOfDay = (int)subject.Date.DayOfWeek-1;
-                        timetable[numberOfDay].Add(subject);
-                    }
-                    
+
                 }
-                catch (WebException e)
+                catch (WebException)
                 {
                     ScheduleDownloadBreaked();
                     return;
                 }
-                
+
             }
 
             ScheduleDownloadEnded();
@@ -112,30 +84,59 @@ namespace KNU_Schedule.Logic
                 }
             }
         }
-        public void GetGroupsList()
+        public void GetGroupsList(int facultyId)
         {
-            request = HttpWebRequest.CreateHttp(AppResources.ApiPath);
-            request.BeginGetResponse(GroupResponse,request);
+            request = WebRequest.CreateHttp(AppResources.ApiPath + "groups?faculty=" + facultyId);
+            request.BeginGetResponse(GroupRequestEnded, request);
+            GroupsDownloadStarted();
         }
-
-        private void GroupResponse(IAsyncResult ar)
+        private void GroupRequestEnded(IAsyncResult ar)
         {
             HttpWebRequest request = ar.AsyncState as HttpWebRequest;
-            if(request != null)
+            if (request != null)
             {
                 try
                 {
-                    WebResponse response = request.EndGetResponse(ar);
-                    using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                    using (WebResponse response = request.EndGetResponse(ar))
                     {
-                        string result = sr.ReadToEnd();
-                        List<string[]> groups = JsonConvert.DeserializeObject<List<string[]>>(result);
-                        List<KSGroup> groupList = new List<KSGroup>();
-                        foreach (string[] groupInfo in groups)
+                        using (StreamReader sr = new StreamReader(response.GetResponseStream()))
                         {
-                            groupList.Add(new KSGroup() { Name = groupInfo[0], FacultyId = groupInfo[1], Id = groupInfo[2] });
+                            string result = sr.ReadToEnd();
+                            KSGroupResponse groups = null;
+                            groups = JsonConvert.DeserializeObject<KSGroupResponse>(result);
+
+                            GroupsDownloadEnded(groups.Result);
                         }
-                        GroupsDownloadEnded(groupList);
+                    }
+                }
+                catch (WebException)
+                {
+                    Deployment.Current.Dispatcher.BeginInvoke(() => MessageBox.Show("Неможливо завантажити дані. Перевірте підключення до мережі."));
+                    GroupsDownloadBreaked();
+                }
+            }
+        }
+        public void GetFaculties()
+        {
+            WebRequest request = WebRequest.CreateHttp(AppResources.ApiPath + "faculties");
+            request.BeginGetResponse(GetFacultiesCallback, request);
+        }
+
+        private void GetFacultiesCallback(IAsyncResult ar)
+        {
+            HttpWebRequest request = ar.AsyncState as HttpWebRequest;
+            if (request != null)
+            {
+                try
+                {
+                    using (WebResponse response = request.EndGetResponse(ar))
+                    {
+                        using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                        {
+                            string result = sr.ReadToEnd();
+                            KSFacultyResponse groups = JsonConvert.DeserializeObject<KSFacultyResponse>(result);
+                            FacultiesDownloadEnded(groups.Result);
+                        }
                     }
                 }
                 catch (WebException)
