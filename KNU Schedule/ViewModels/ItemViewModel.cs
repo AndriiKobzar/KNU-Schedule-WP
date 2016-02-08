@@ -92,15 +92,15 @@ namespace KNU_Schedule.ViewModels
             }
         }
     }
-    public class DayViewModel:INotifyPropertyChanged
+    public class DayViewModel : INotifyPropertyChanged
     {
         string header;
         public string Header
         {
             get { return header; }
-            set 
-            { 
-                if (header!=value)
+            set
+            {
+                if (header != value)
                 {
                     header = value;
                     NotifyPropertyChanged("Header");
@@ -130,13 +130,13 @@ namespace KNU_Schedule.ViewModels
             }
         }
     }
-    public class FacultyViewModel:INotifyPropertyChanged
+    public class FacultyViewModel : INotifyPropertyChanged
     {
         string name = "";
         public string FacultyName
         {
             get { return name; }
-            set 
+            set
             {
                 if (name != value)
                 {
@@ -145,8 +145,8 @@ namespace KNU_Schedule.ViewModels
                 }
             }
         }
-        string id = null;
-        public string ID
+        int id = 0;
+        public int ID
         {
             get { return this.id; }
             set { this.id = value; }
@@ -172,7 +172,7 @@ namespace KNU_Schedule.ViewModels
         public string GroupName
         {
             get { return name; }
-            set 
+            set
             {
                 if (name != value)
                 {
@@ -181,7 +181,13 @@ namespace KNU_Schedule.ViewModels
                 }
             }
         }
-        
+        int id;
+        public int Id
+        {
+            get { return id; }
+            set { id = value; NotifyPropertyChanged("Id"); }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

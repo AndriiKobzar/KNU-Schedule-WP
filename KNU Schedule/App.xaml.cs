@@ -110,7 +110,7 @@ namespace KNU_Schedule
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
-            App.ViewModel.LoadGroups();
+            
             if(IsolatedStorageSettings.ApplicationSettings.Contains(AppResources.GROUP_ID))
                 App.RootFrame.Navigate(new Uri("/Pages/TimetablePage.xaml", UriKind.Relative));
         }

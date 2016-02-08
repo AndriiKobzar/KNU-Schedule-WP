@@ -61,7 +61,7 @@ namespace KNU_Schedule.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://knuapps.cloudapp.net/schedule/.
+        ///   Looks up a localized string similar to http://knuapps.cloudapp.net/api/schedule/.
         /// </summary>
         public static string ApiPath {
             get {

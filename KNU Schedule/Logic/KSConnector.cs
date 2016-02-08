@@ -58,7 +58,8 @@ namespace KNU_Schedule.Logic
                             results = stream.ReadToEnd();
                         }
                         saveDataToIsolatedStorage(results);
-                        KSScheduleResult list = JsonConvert.DeserializeObject<KSScheduleResult>(results);
+                        KSScheduleResult scheduleResult = JsonConvert.DeserializeObject<KSScheduleResult>(results);
+                        var requestResult = scheduleResult.Result;
                     }
 
                 }
@@ -135,7 +136,7 @@ namespace KNU_Schedule.Logic
                         {
                             string result = sr.ReadToEnd();
                             KSFacultyResponse groups = JsonConvert.DeserializeObject<KSFacultyResponse>(result);
-                            FacultiesDownloadEnded(groups.Result);
+                            Deployment.Current.Dispatcher.BeginInvoke(() => FacultiesDownloadEnded(groups.Result));
                         }
                     }
                 }

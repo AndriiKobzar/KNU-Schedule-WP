@@ -1,27 +1,15 @@
 ﻿using System.IO.IsolatedStorage;
-using System.Net;
-using System.Xml;
-using System.Xml.Linq;
-using KNU_Schedule.Resources;
-using System;
-using System.Windows;
 using System.IO;
-using System.Windows.Threading;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
 namespace KNU_Schedule.Logic
 {
     public class KSSchedule
     {
-        List<KSSubject>[] timetable = new List<KSSubject>[5];
+        List<List<KSSubject>> timetable = new List<List<KSSubject>>();
         public KSSchedule()
         {
-            for (int i = 0; i < 5; i++)
-            {
-                timetable[i] = new List<KSSubject>();
-            }
+           
         }
         public KSSchedule(string groupKey):this()
         {
@@ -34,7 +22,6 @@ namespace KNU_Schedule.Logic
             set 
             { 
                 this.timetable[day][period] = value;
-                App.ViewModel.LoadGroups();
             }
         }
         public List<KSSubject> this[int day]
@@ -55,7 +42,7 @@ namespace KNU_Schedule.Logic
         }
         private bool dayIsNotNull(int day)
         {
-            for (int i = 0; i < timetable.GetLength(1); i++ )
+            for (int i = 0; i < timetable.Count; i++)
             {
                 if (timetable[day][i] != null) return true;
             }
@@ -64,18 +51,15 @@ namespace KNU_Schedule.Logic
 
         internal void Clear()
         {
-            for (int i = 0; i < 5; i++)
-            {
-                timetable[i] = new List<KSSubject>();
-            }
+            timetable = new List<List<KSSubject>>(); 
         }
     }
     public class KSScheduleResult
     {
         public int Status { get; set; }
         public int Error { get; set; }
-        //first level-for security and standartization
-        //second level is for week data
+        //first level for security and standartization
+        //second level is for week data: number of week -> 
         //third level is for day data
         //fourth level is for subject data
         public List<Dictionary<string,Dictionary<string,List<List<KSSubject>>>>> Result;

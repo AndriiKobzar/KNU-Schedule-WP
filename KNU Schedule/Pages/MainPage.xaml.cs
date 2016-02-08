@@ -21,12 +21,9 @@ namespace KNU_Schedule
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadGroups();
-            }
             if (IsolatedStorageSettings.ApplicationSettings.Contains(AppResources.GROUP_ID))
                 NavigationService.Navigate(new Uri("/Pages/TimetablePage.xaml", UriKind.Relative));
+            else App.ViewModel.LoadFaculties();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -46,10 +43,14 @@ namespace KNU_Schedule
 
         private void FacultyPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (FacultyPicker != null && FacultyPicker.SelectedItem != null)
+            if (FacultyPicker.SelectedItem != null)
                 App.ViewModel.LoadGroups((FacultyPicker.SelectedItem as FacultyViewModel).ID);
-            GroupPicker.ItemsSource = App.ViewModel.GroupsList;
         }
 
+        private void coursePicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (coursePicker.SelectedItem != null)
+                App.ViewModel.ShowGroups((coursePicker.SelectedItem as CourseViewModel).CourseName);
+        }
     }
 }
