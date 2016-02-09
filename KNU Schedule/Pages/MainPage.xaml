@@ -44,7 +44,7 @@
                    FontSize="50"/>
         <TextBlock Text="Оберіть факультет"
                    Margin="22,147,-10,593" 
-                   FontSize="40"/> 
+                   FontSize="40"/>
         <TextBlock Text="Оберіть курс" 
                    Margin="22,266,14,478" 
                    FontSize="40"/>
@@ -53,16 +53,13 @@
                    TextWrapping="Wrap" 
                    Text="Оберіть групу"
                    FontSize="40"/>
-        
 
-
-        <toolkit:ListPicker ItemsSource="{Binding FacultyList}"
-                            x:Name="FacultyPicker"
-                            Margin="12,198,12,12"
-                            SelectionChanged="FacultyPicker_SelectionChanged">
+        <toolkit:ListPicker ItemsSource="{Binding GroupsList}"
+                            x:Name="GroupPicker"
+                            Margin="10,446,14,-18">
             <toolkit:ListPicker.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding FacultyName}"/>
+                    <TextBlock Text="{Binding GroupName}"/>
                 </DataTemplate>
             </toolkit:ListPicker.ItemTemplate>
         </toolkit:ListPicker>
@@ -75,20 +72,20 @@
                 <DataTemplate>
                     <TextBlock Text="{Binding CourseName}"/>
                 </DataTemplate>
-            </toolkit:ListPicker.ItemTemplate>    
+            </toolkit:ListPicker.ItemTemplate>
         </toolkit:ListPicker>
-        
-        <toolkit:ListPicker ItemsSource="{Binding GroupList}"
-                            x:Name="GroupPicker"
-                            Margin="10,446,14,-18">
+
+        <toolkit:ListPicker ItemsSource="{Binding FacultyList}"
+                            x:Name="FacultyPicker"
+                            Margin="12,198,12,12"
+                            
+                            SelectionChanged="FacultyPicker_SelectionChanged">
             <toolkit:ListPicker.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding GroupName}"/>
+                    <TextBlock Text="{Binding FacultyName}"/>
                 </DataTemplate>
             </toolkit:ListPicker.ItemTemplate>
         </toolkit:ListPicker>
-        
-
         <Button x:Name="LoginBtn" 
                 Content="Увійти" 
                 Click="LoginBtn_Click" 

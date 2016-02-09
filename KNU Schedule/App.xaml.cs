@@ -120,7 +120,6 @@ namespace KNU_Schedule
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
             // Ensure that required application state is persisted here.
-            App.ViewModel.LoadSubjects();
         }
 
         // Code to execute when the application is closing (eg, user hit Back)

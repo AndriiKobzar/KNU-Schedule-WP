@@ -33,23 +33,28 @@ namespace KNU_Schedule
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            //string groupName = (GroupPicker.SelectedItem as GroupViewModel).GroupName;
-            //if (!IsolatedStorageSettings.ApplicationSettings.Contains(AppResources.GROUP_ID))
-            //    IsolatedStorageSettings.ApplicationSettings.Add(AppResources.GROUP_ID, App.ViewModel.IdByName(groupName));
-            //else
-            //    IsolatedStorageSettings.ApplicationSettings[AppResources.GROUP_ID] = App.ViewModel.IdByName(groupName);
+            int groupName = (GroupPicker.SelectedItem as GroupViewModel).Id;
+            if (!IsolatedStorageSettings.ApplicationSettings.Contains(AppResources.GROUP_ID))
+            {
+                IsolatedStorageSettings.ApplicationSettings.Add(AppResources.GROUP_ID, groupName);
+            }
+            else
+            {
+                IsolatedStorageSettings.ApplicationSettings[AppResources.GROUP_ID] = groupName;
+            }
+            IsolatedStorageSettings.ApplicationSettings.Save();
             NavigationService.Navigate(new Uri("/Pages/TimetablePage.xaml", UriKind.Relative));
         }
 
         private void FacultyPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (FacultyPicker.SelectedItem != null)
+            if (FacultyPicker != null && FacultyPicker.SelectedItem != null)
                 App.ViewModel.LoadGroups((FacultyPicker.SelectedItem as FacultyViewModel).ID);
         }
 
         private void coursePicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (coursePicker.SelectedItem != null)
+            if (coursePicker != null && coursePicker.SelectedItem != null)
                 App.ViewModel.ShowGroups((coursePicker.SelectedItem as CourseViewModel).CourseName);
         }
     }

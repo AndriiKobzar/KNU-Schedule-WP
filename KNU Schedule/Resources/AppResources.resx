@@ -141,7 +141,7 @@
     <comment>names of days of week</comment>
   </data>
   <data name="ApiPath" xml:space="preserve">
-    <value>http://knuapps.cloudapp.net/api/schedule/</value>
+    <value>http://kap.cloudapp.net/api/schedule/</value>
     <comment>adress of API server</comment>
   </data>
   <data name="GROUP_ID" xml:space="preserve">

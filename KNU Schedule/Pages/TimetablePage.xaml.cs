@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
 using KNU_Schedule.Logic;
 using KNU_Schedule.Resources;
 using System.IO.IsolatedStorage;
+using Microsoft.Phone.Shell;
 
 namespace KNU_Schedule
 {
@@ -41,22 +38,8 @@ namespace KNU_Schedule
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            KSController connector = App.Connector;
-            connector.ScheduleDownloadBreaked += () => 
-            {
-                Deployment.Current.Dispatcher.BeginInvoke(() => { MessageBox.Show("Не вдалося завантажити розклад. Перевірте підключення до мережі."); });
-            };
-            connector.ScheduleDownloadEnded += () =>
-            {
-                Deployment.Current.Dispatcher.BeginInvoke(() =>
-                    {
-                        DownloadingBar.Visibility = Visibility.Collapsed;
-                        App.ViewModel.LoadSubjects();
-                        //this.pivot.DataContext = App.ViewModel.Days;
-                    });
-            };
-       //     connector.CreateTimetable(IsolatedStorageSettings.ApplicationSettings[AppResources.GROUP_ID].ToString());
-            connector.CreateTimetable("12");
+            App.Connector.ScheduleDownloadEnded += (result) => { DownloadingBar.Visibility = Visibility.Collapsed; };            
+            App.ViewModel.LoadSubjects((int)IsolatedStorageSettings.ApplicationSettings[AppResources.GROUP_ID]);
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -72,6 +55,13 @@ namespace KNU_Schedule
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Terminate();
+        }
+
+        private void weekSwitch_Click(object sender, EventArgs e)
+        {
+            var weekSwitch = sender as ApplicationBarIconButton;
+            weekSwitch.Text = (weekSwitch.Text == "знаменник") ? "чисельник" : "знаменник";
+            App.ViewModel.ChangeWeek();
         }
     }
 }

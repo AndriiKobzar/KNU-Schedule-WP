@@ -6,5 +6,9 @@
         public string Faculty { get; set; }
         public int FacultyId { get; set; }
         public string Name { get; set; }
+        public override string ToString()
+        {
+            return Name + ", " + Faculty;
+        }
     }
 }

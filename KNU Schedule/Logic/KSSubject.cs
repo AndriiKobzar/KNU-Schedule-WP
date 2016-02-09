@@ -10,8 +10,8 @@ namespace KNU_Schedule.Logic
     {
         public int Id { get; set; }
         public int Num { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
+        public int Start { get; set; }
+        public int End { get; set; }
         public string Name { get; set; }
         public int Type { get; set; }
         public List<KSTeacher> Teachers { get; set; }

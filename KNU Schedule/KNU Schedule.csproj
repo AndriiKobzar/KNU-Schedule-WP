@@ -95,7 +95,7 @@
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Logic\KSClassroom.cs" />
-    <Compile Include="Logic\KSConnector.cs" />
+    <Compile Include="Logic\KSController.cs" />
     <Compile Include="Logic\KSFaculty.cs" />
     <Compile Include="Logic\KSGroup.cs" />
     <Compile Include="Logic\KSSubject.cs" />
@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AppBar\back.png" />
+    <Content Include="Assets\AppBar\basecircle.png" />
     <Content Include="Assets\knu.jpg" />
     <Content Include="Assets\KNU_Background.jpg" />
     <Content Include="Assets\PanoramaBackground.png" />
